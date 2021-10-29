@@ -1,0 +1,42 @@
+.tab {
+  margin-bottom: 48px;
+}
+
+.ingredients {
+  max-width: 600px;
+}
+
+.ingredients__title {
+  text-align: left;
+  margin: 0;
+}
+
+.ingredients__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+}
+
+.ingredients__price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.price {
+  margin-right: 9px;
+}
+
+.ingredients__img {
+  padding: 8px;
+}
+
+.ingredients__item {
+  position: relative;
+}
+
+.ingredients__descr {
+  margin: 8px 0;
+}

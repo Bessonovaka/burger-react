@@ -1,0 +1,36 @@
+.header {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+}
+
+.navigation {
+  padding: 32px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation__group {
+  display: flex;
+}
+
+.navigation__link {
+  cursor: pointer;
+  margin-right: 49px;
+  display: flex;
+  align-items: center;
+}
+
+.navigation__link:last-child {
+  margin-right: 0;
+}
+
+.navigation__text {
+  margin-left: 9px;
+}
+
+.navigation__logo {
+  margin-left: 132px;
+  margin-right: 311px;
+}

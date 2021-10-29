@@ -1,0 +1,23 @@
+.constructor {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.constructor_item {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.ingredients__price {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-top: 40px;
+}
+
+.price {
+  margin-left: 48px;
+}
