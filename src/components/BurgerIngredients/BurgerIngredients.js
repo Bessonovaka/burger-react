@@ -9,9 +9,9 @@ import { ingredients } from '../utils/data.js';
 function BurgerIngredients() {
 
     const [current, setCurrent] = React.useState('Булки')
-    
+
     return (
-        <>
+        <div>
             <div style={{ display: 'flex' }} className={BurgerIngredientsStyle.tab}>
                 <Tab value="Булки" active={current === 'Булки'} onClick={setCurrent}>
                     Булки
@@ -50,7 +50,7 @@ function BurgerIngredients() {
                 </ul>
             </div>
             </div>
-        </>
+        </div>
     )
 }
 

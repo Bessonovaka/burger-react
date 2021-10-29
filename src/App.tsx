@@ -7,8 +7,11 @@ function App() {
   return (
     <div className="App">
       <AppHeader />
+      
+      <main className="main">
       <BurgerIngredients />
       <BurgerConstructor />
+      </main>
     </div>
   );
 }

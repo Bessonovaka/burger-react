@@ -16,10 +16,11 @@
 }
 
 .navigation__link {
-  cursor: pointer;
   margin-right: 49px;
   display: flex;
   align-items: center;
+  color: white;
+  text-decoration: none;
 }
 
 .navigation__link:last-child {
