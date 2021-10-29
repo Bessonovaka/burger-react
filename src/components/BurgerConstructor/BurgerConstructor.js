@@ -2,8 +2,6 @@ import { ConstructorElement, CurrencyIcon, Button, DragIcon } from '@ya.praktiku
 
 import BurgerConstructorStyle from './BurgerConstructor.module.css';
 
-import bun1 from '../../images/bun-02.png';
-
 function BurgerConstructor() {
     return (
         <section className={BurgerConstructorStyle.constructor}>
@@ -14,7 +12,7 @@ function BurgerConstructor() {
                     isLocked={true}
                     text="Краторная булка N-200i (верх)"
                     price={200}
-                    thumbnail={bun1}
+                    //thumbnail={bun1}
                 />
             </div>
             <div className={BurgerConstructorStyle.constructor_item}>
@@ -22,7 +20,7 @@ function BurgerConstructor() {
                 <ConstructorElement
                     text="Краторная булка N-200i (верх)"
                     price={200}
-                    thumbnail={bun1}
+                    //thumbnail={bun1}
                 />
             </div>
             <div className={BurgerConstructorStyle.constructor_item}>
@@ -32,13 +30,13 @@ function BurgerConstructor() {
                     isLocked={true}
                     text="Краторная булка N-200i (верх)"
                     price={200}
-                    thumbnail={bun1}
+                    //thumbnail={bun1}
                 />
             </div>
             <div className={BurgerConstructorStyle.ingredients__price}>
-                <span  className={`text text_type_digits-medium`}>600</span>
+                <span  className={`${BurgerConstructorStyle.price__text} text_type_digits-medium`}>600</span>
                 <CurrencyIcon type="primary" />
-                <div className={BurgerConstructorStyle.price}>
+                <div className={BurgerConstructorStyle.price__btn}>
                 <Button type="primary" size="medium">
                     Оформить заказ
                 </Button>

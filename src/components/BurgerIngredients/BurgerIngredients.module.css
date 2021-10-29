@@ -35,8 +35,12 @@
 
 .ingredients__item {
   position: relative;
+  max-width: 250px;
 }
 
 .ingredients__descr {
   margin: 8px 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

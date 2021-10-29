@@ -4,15 +4,15 @@ import { BurgerIcon, ListIcon, ProfileIcon, Typography, Logo } from '@ya.praktik
 function AppHeader() {
     return (
         <header className={AppHeaderStyle.header}>
-          <nav className={AppHeaderStyle.navigation}>
+          <nav className={`text_type_main-default ${AppHeaderStyle.navigation}`}>
               <div className={AppHeaderStyle.navigation__group}>
               <a className={AppHeaderStyle.navigation__link}>
                 <BurgerIcon type="primary" className={AppHeaderStyle.navigation__icon} />
-                <span className={`text text_type_main-default ${AppHeaderStyle.navigation__text}`}>Конструктор</span>
+                <span className={AppHeaderStyle.navigation__text}>Конструктор</span>
               </a>
               <a className={AppHeaderStyle.navigation__link}>
                 <ListIcon type="primary" />
-                <span className={`text text_type_main-default ${AppHeaderStyle.navigation__text}`}>Лента заказов</span>
+                <span className={AppHeaderStyle.navigation__text}>Лента заказов</span>
               </a>
               </div>
               <a className={`${AppHeaderStyle.navigation__link} ${AppHeaderStyle.navigation__logo}`}>
@@ -20,7 +20,7 @@ function AppHeader() {
               </a>
               <a className={AppHeaderStyle.navigation__link}>
               <ProfileIcon type="primary" />
-                <span className={`text text_type_main-default ${AppHeaderStyle.navigation__text}`}>Личный кабинет</span>
+                <span className={AppHeaderStyle.navigation__text}>Личный кабинет</span>
               </a>
           </nav>
         </header>

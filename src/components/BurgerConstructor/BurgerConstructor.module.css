@@ -18,6 +18,10 @@
   margin-top: 40px;
 }
 
-.price {
+.price__btn {
   margin-left: 48px;
+}
+
+.price__text {
+  margin-right: 10px;
 }
