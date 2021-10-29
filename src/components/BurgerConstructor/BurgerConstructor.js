@@ -4,12 +4,22 @@ import BurgerConstructorStyle from './BurgerConstructor.module.css';
 
 function BurgerConstructor() {
     return (
-        <section className={BurgerConstructorStyle.constructor}>
+        <section  className={`${BurgerConstructorStyle.constructor} layout-cell layout-scrollbar`}>
             <div className={BurgerConstructorStyle.constructor_item}>
                 <DragIcon type="primary" />
                 <ConstructorElement
                     type="top"
                     isLocked={true}
+                    text="Краторная булка N-200i (верх)"
+                    price={200}
+                    //thumbnail={bun1}
+                />
+            </div>
+            <div  className={`layout-cell layout-scrollbar`}>
+            
+            <div className={BurgerConstructorStyle.constructor_item}>
+                <DragIcon type="primary" />
+                <ConstructorElement
                     text="Краторная булка N-200i (верх)"
                     price={200}
                     //thumbnail={bun1}
@@ -22,6 +32,56 @@ function BurgerConstructor() {
                     price={200}
                     //thumbnail={bun1}
                 />
+            </div>
+            <div className={BurgerConstructorStyle.constructor_item}>
+                <DragIcon type="primary" />
+                <ConstructorElement
+                    text="Краторная булка N-200i (верх)"
+                    price={200}
+                    //thumbnail={bun1}
+                />
+            </div>
+            <div className={BurgerConstructorStyle.constructor_item}>
+                <DragIcon type="primary" />
+                <ConstructorElement
+                    text="Краторная булка N-200i (верх)"
+                    price={200}
+                    //thumbnail={bun1}
+                />
+            </div>
+            <div className={BurgerConstructorStyle.constructor_item}>
+                <DragIcon type="primary" />
+                <ConstructorElement
+                    text="Краторная булка N-200i (верх)"
+                    price={200}
+                    //thumbnail={bun1}
+                />
+            </div>
+            <div className={BurgerConstructorStyle.constructor_item}>
+                <DragIcon type="primary" />
+                <ConstructorElement
+                    text="Краторная булка N-200i (верх)"
+                    price={200}
+                    //thumbnail={bun1}
+                />
+            </div>
+            <div className={BurgerConstructorStyle.constructor_item}>
+                <DragIcon type="primary" />
+                <ConstructorElement
+                    text="Краторная булка N-200i (верх)"
+                    price={200}
+                    //thumbnail={bun1}
+                />
+            </div>
+            <div className={BurgerConstructorStyle.constructor_item}>
+                <DragIcon type="primary" />
+                <ConstructorElement
+                    text="Краторная булка N-200i (верх)"
+                    price={200}
+                    //thumbnail={bun1}
+                />
+            </div>
+            
             </div>
             <div className={BurgerConstructorStyle.constructor_item}>
                 <DragIcon type="primary" />

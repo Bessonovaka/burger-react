@@ -23,7 +23,9 @@ function BurgerIngredients() {
                     Начинки
                 </Tab>
             </div>
-            <div className={`text text_type_main-default ${BurgerIngredientsStyle.ingredients}`}>
+            
+            <div className={`text text_type_main-default layout-cell layout-scrollbar ${BurgerIngredientsStyle.ingredients__wrap}`}>
+            <div>
                 <h2 className={BurgerIngredientsStyle.ingredients__title}>Булки</h2>
                 <ul className={BurgerIngredientsStyle.ingredients__list}>
                     {ingredients.map((ingredient, i) => (
@@ -31,7 +33,7 @@ function BurgerIngredients() {
                     ))}
                 </ul>
             </div>
-            <div className={`text text_type_main-default ${BurgerIngredientsStyle.ingredients}`}>
+            <div>
                 <h2 className={BurgerIngredientsStyle.ingredients__title}>Соусы</h2>
                 <ul className={BurgerIngredientsStyle.ingredients__list}>
                     {ingredients.map((ingredient, i) => (
@@ -39,13 +41,14 @@ function BurgerIngredients() {
                     ))}
                 </ul>
             </div>
-            <div className={`text text_type_main-default ${BurgerIngredientsStyle.ingredients}`}>
+            <div>
                 <h2 className={BurgerIngredientsStyle.ingredients__title}>Начинки</h2>
                 <ul className={BurgerIngredientsStyle.ingredients__list}>
                     {ingredients.map((ingredient, i) => (
                         ingredient.type === "main" && <Ingredient key={i} img={ingredient.image} price={ingredient.price} description={ingredient.name} />
                     ))}
                 </ul>
+            </div>
             </div>
         </>
     )
