@@ -2,7 +2,7 @@ import { ConstructorElement, CurrencyIcon, Button, DragIcon } from '@ya.praktiku
 
 import BurgerConstructorStyle from './BurgerConstructor.module.css';
 
-function BurgerConstructor() {
+function BurgerConstructor(props) {
     return (
         <section  className={`${BurgerConstructorStyle.constructor} layout-cell layout-scrollbar`}>
             <div className={BurgerConstructorStyle.constructor_item}>
@@ -12,7 +12,7 @@ function BurgerConstructor() {
                     isLocked={true}
                     text="Краторная булка N-200i (верх)"
                     price={200}
-                    //thumbnail={bun1}
+                    //thumbnail={props.ingredients[0][image]}
                 />
             </div>
             <div  className={`layout-cell layout-scrollbar`}>

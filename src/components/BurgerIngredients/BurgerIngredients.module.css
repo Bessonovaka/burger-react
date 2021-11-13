@@ -41,6 +41,7 @@
 .ingredients__item {
   position: relative;
   max-width: 250px;
+  cursor: pointer;
 }
 
 .ingredients__descr {

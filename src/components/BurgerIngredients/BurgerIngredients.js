@@ -4,9 +4,7 @@ import Ingredient from './Ingredient';
 
 import BurgerIngredientsStyle from './BurgerIngredients.module.css';
 
-import { ingredients } from '../utils/data.js';
-
-function BurgerIngredients() {
+function BurgerIngredients(props) {
 
     const [current, setCurrent] = React.useState('Булки')
 
@@ -28,24 +26,24 @@ function BurgerIngredients() {
             <div>
                 <h2 className={BurgerIngredientsStyle.ingredients__title}>Булки</h2>
                 <ul className={BurgerIngredientsStyle.ingredients__list}>
-                    {ingredients.map((ingredient, i) => (
-                        ingredient.type === "bun" && <Ingredient key={i} img={ingredient.image} price={ingredient.price} description={ingredient.name} />
+                    {props.ingredients.map((ingredient, i) => (
+                        ingredient.type === "bun" && <Ingredient ingredient={ingredient} modal={props.modal} modalOpen={props.modalOpen} key={i}/>
                     ))}
                 </ul>
             </div>
             <div>
                 <h2 className={BurgerIngredientsStyle.ingredients__title}>Соусы</h2>
                 <ul className={BurgerIngredientsStyle.ingredients__list}>
-                    {ingredients.map((ingredient, i) => (
-                        ingredient.type === "sauce" && <Ingredient key={i} img={ingredient.image} price={ingredient.price} description={ingredient.name} />
+                    {props.ingredients.map((ingredient, i) => (
+                        ingredient.type === "sauce" && <Ingredient modal={props.modal} modalOpen={props.modalOpen} key={i} ingredient={ingredient} />
                     ))}
                 </ul>
             </div>
             <div>
                 <h2 className={BurgerIngredientsStyle.ingredients__title}>Начинки</h2>
                 <ul className={BurgerIngredientsStyle.ingredients__list}>
-                    {ingredients.map((ingredient, i) => (
-                        ingredient.type === "main" && <Ingredient key={i} img={ingredient.image} price={ingredient.price} description={ingredient.name} />
+                    {props.ingredients.map((ingredient, i) => (
+                        ingredient.type === "main" && <Ingredient modal={props.modal} modalOpen={props.modalOpen} key={i} ingredient={ingredient} />
                     ))}
                 </ul>
             </div>
