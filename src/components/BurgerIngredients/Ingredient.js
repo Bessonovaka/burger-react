@@ -12,13 +12,13 @@ function Ingredient(props) {
     
     return(        
         <li onClick={handleIngredientClick} className={`${BurgerIngredientsStyle.ingredients__item}`} >
-            <img alt={props.ingredient.description} src={props.ingredient.image} className={BurgerIngredientsStyle.ingredients__img} />
+            <img alt={props.ingredient.name} src={props.ingredient.image} className={BurgerIngredientsStyle.ingredients__img} />
             <Counter count={1} size="default" />
             <div className={BurgerIngredientsStyle.ingredients__price}>
                 <span className={BurgerIngredientsStyle.price}>{props.ingredient.price}</span>
                 <CurrencyIcon type="primary" />
             </div>
-            <p className={BurgerIngredientsStyle.ingredients__descr}>{props.ingredient.description}</p>
+            <p className={BurgerIngredientsStyle.ingredients__descr}>{props.ingredient.name}</p>
         </li>
     )
 }

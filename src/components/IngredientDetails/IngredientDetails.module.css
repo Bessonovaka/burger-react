@@ -1,0 +1,35 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  color: #8585ad;
+  text-align: center;
+}
+
+.item:last-child {
+  margin-right: 0;
+}
+
+.descr {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.img__wrap {
+  height: 240px;
+  width: 480px;
+  margin: auto;
+}
+
+.img {
+  height: 240px;
+}
+
+.subtitle {
+  margin-bottom: 8px;
+}

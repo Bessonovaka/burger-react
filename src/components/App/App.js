@@ -2,7 +2,7 @@ import './App.css';
 import AppHeader from '../AppHeader/AppHeader';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients';
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
-import React, { useEffect } from 'react';
+import React from 'react';
 import ModalOverlay from '../ModalOverlay/ModalOverlay';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
   const [modal, setModalOpen] = React.useState(false);
   const [selectedIngredient, setSelectedIngredient] = React.useState({});
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleEsc = (event) => {
       if(event.keyCode === 27) {
         closeAllPopups();
@@ -33,7 +33,7 @@ function App() {
     setModalOpen(false);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetch('https://norma.nomoreparties.space/api/ingredients')
       .then((res) => {
         return res.json();
