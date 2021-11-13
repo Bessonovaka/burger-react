@@ -8,7 +8,8 @@ import ModalOverlay from '../ModalOverlay/ModalOverlay';
 function App() {
 
   const [ingredients, setIngredients] = React.useState([]);
-  const [modal, setModalOpen] = React.useState(false);
+  const [isIngredientDetailsOpen, setIngredientDetailsOpen] = React.useState(false);
+  const [isOrderDetailsOpen, setOrderDetailsOpen] = React.useState(false);
   const [selectedIngredient, setSelectedIngredient] = React.useState({});
 
   React.useEffect(() => {
@@ -24,13 +25,18 @@ function App() {
     };
   }, []);
 
-  function modalOpen(ingredient) {
-    setModalOpen(true);
+  function modalIngredientDetailsOpen(ingredient) {
+    setIngredientDetailsOpen(true);
     setSelectedIngredient(ingredient);
   }
 
+  function modalOrderDetailsOpenOpen() {
+    setOrderDetailsOpen(true);
+  }
+
   function closeAllPopups() {
-    setModalOpen(false);
+    setOrderDetailsOpen(false);
+    setIngredientDetailsOpen(false);
   };
 
   React.useEffect(() => {
@@ -48,12 +54,17 @@ function App() {
   
   return (
     <div className="App">
-      <ModalOverlay modal={modal} ingredient={selectedIngredient} onClose={closeAllPopups} />
+      <ModalOverlay 
+        isIngredientDetailsOpen={isIngredientDetailsOpen}
+        isOrderDetailsOpen={isOrderDetailsOpen}
+        ingredient={selectedIngredient}
+        onClose={closeAllPopups}
+      />
       <AppHeader />
       
       <main className="main">
-      <BurgerIngredients ingredients={ingredients} modal={modal} modalOpen={modalOpen}/>
-      <BurgerConstructor ingredients={ingredients} />
+      <BurgerIngredients ingredients={ingredients} modalOpen={modalIngredientDetailsOpen}/>
+      <BurgerConstructor ingredients={ingredients} modalOpen={modalOrderDetailsOpenOpen}/>
       </main>
     </div>
   );

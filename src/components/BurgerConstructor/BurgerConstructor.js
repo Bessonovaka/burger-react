@@ -97,7 +97,7 @@ function BurgerConstructor(props) {
                 <span  className={`${BurgerConstructorStyle.price__text} text_type_digits-medium`}>600</span>
                 <CurrencyIcon type="primary" />
                 <div className={BurgerConstructorStyle.price__btn}>
-                <Button type="primary" size="medium">
+                <Button type="primary" size="medium" onClick={props.modalOpen}>
                     Оформить заказ
                 </Button>
                 </div>

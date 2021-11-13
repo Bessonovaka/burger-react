@@ -1,0 +1,31 @@
+.container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.opened {
+  display: flex;
+}
+
+.title {
+  margin-bottom: 40px;
+}
+
+.subtitle {
+  margin-bottom: 60px;
+}
+
+.img {
+  height: 120px;
+  width: 120px;
+  margin-bottom: 60px;
+}
+
+.text {
+  margin-bottom: 8px;
+}
+
+.subtext {
+  color: #8585ad;
+}

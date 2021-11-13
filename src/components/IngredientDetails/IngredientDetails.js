@@ -2,7 +2,7 @@ import IngredientDetailsStyle from './IngredientDetails.module.css';
 
 function IngredientDetails(props) {
     return(
-        <div>
+        <div className={`${IngredientDetailsStyle.container} ${props.isOpen && IngredientDetailsStyle.opened}`}>
             <div className={IngredientDetailsStyle.img__wrap}>
                 <img className={IngredientDetailsStyle.img} src={props.ingredient.image}/>
             </div>            

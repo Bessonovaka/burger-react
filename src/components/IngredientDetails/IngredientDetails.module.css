@@ -1,3 +1,7 @@
+.container {
+  display: none;
+}
+
 .item {
   display: flex;
   flex-direction: column;
@@ -32,4 +36,8 @@
 
 .subtitle {
   margin-bottom: 8px;
+}
+
+.opened {
+  display: block;
 }
