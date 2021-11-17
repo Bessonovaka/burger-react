@@ -9,7 +9,8 @@ function ModalOverlay(props) {
                 onClose={props.onClose} 
                 ingredient={props.ingredient}
                 isOrderDetailsOpen={props.isOrderDetailsOpen}
-                isIngredientDetailsOpen={props.isIngredientDetailsOpen}
+                isIngredientDetailsOpen={props.isIngredientDetailsOpen} 
+                orderInfo={props.orderInfo}
             />
         </div>
     )

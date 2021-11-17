@@ -17,7 +17,7 @@ function Modal(props) {
                 <CloseIcon type="primary" />
               </div>
             </div>
-            <OrderDetails isOpen={props.isOrderDetailsOpen}  />
+            <OrderDetails isOpen={props.isOrderDetailsOpen} orderInfo={props.orderInfo} />
             <IngredientDetails isOpen={props.isIngredientDetailsOpen} ingredient={props.ingredient} />
             </form>
         

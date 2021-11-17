@@ -4,7 +4,7 @@ function IngredientDetails(props) {
     return(
         <div className={`${IngredientDetailsStyle.container} ${props.isOpen && IngredientDetailsStyle.opened}`}>
             <div className={IngredientDetailsStyle.img__wrap}>
-                <img className={IngredientDetailsStyle.img} src={props.ingredient.image}/>
+                <img className={IngredientDetailsStyle.img} src={props.ingredient.image} alt={props.ingredient.name}/>
             </div>            
             <p className={`text text_type_main-medium ${IngredientDetailsStyle.title}`}>{props.ingredient.name}</p>
             <div className={IngredientDetailsStyle.descr}>

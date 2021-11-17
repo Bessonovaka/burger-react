@@ -12,6 +12,10 @@
   align-items: center;
   margin-top: 10px;
 }
+.constructor_list {
+  padding: 0;
+  margin: 0;
+}
 
 .ingredients__price {
   display: flex;

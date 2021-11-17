@@ -24,9 +24,7 @@ function Ingredient(props) {
 }
 
 Ingredient.propTypes = {
-    price: PropTypes.number,
-    description: PropTypes.string,
-    img: PropTypes.string,
+    ingredient: PropTypes.object
 };
 
 export default Ingredient;
