@@ -4,10 +4,10 @@ import { CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-c
 import BurgerIngredientsStyle from './BurgerIngredients.module.css';
 
 
-
 function Ingredient(props) {    
     function handleIngredientClick() {
         props.modalOpen(props.ingredient);
+        console.log(props.ingredient)
     }
     
     return(        

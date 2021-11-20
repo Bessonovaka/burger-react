@@ -30,4 +30,5 @@ function IngredientDetails(props) {
     )
 } 
 
+
 export default IngredientDetails;
