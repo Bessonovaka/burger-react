@@ -6,7 +6,7 @@ import { order } from './order';
 const rootReducer = combineReducers({
     ingredients,
     ingredient,
-    order
+    order,
 });
 
 export default rootReducer;

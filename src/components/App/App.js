@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
 
 import AppHeader from '../AppHeader/AppHeader';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients';
@@ -12,7 +14,6 @@ import { postOrder } from '../../services/actions/order';
 
 import './App.css';
 
-import { BurgerConstructorContext } from '../../utils/appContext';
 import { constData } from '../../utils/constants';
 
 
@@ -36,13 +37,11 @@ function App(props) {
     };  
   }, []);
 
-  const actualIngredients = constData.filter(ingredient =>  ingredient.type !== "bun" );
-  const bunIngredient = constData.filter(ingredient => ingredient.type === "bun" );
-  const allIngredients = actualIngredients.concat(bunIngredient[0]);
-  const id_ = allIngredients.map((ingredient) => {
+  const id_ = constData.map((ingredient) => {
     return ingredient._id;
   })
 
+  const bunIngredient = props.actualIngredients.filter(item => item.type === 'bun')
 
   function orderButtonClick() {
     props.getOrderNumber('https://norma.nomoreparties.space/api/orders/', id_);
@@ -74,20 +73,21 @@ function App(props) {
         <AppHeader />
         
         <main className="main">
-        <BurgerIngredients ingredients={props.ingredients} modalOpen={modalIngredientDetailsOpen} />
-        <BurgerConstructorContext.Provider value={props.ingredients} >
-          <BurgerConstructor modalOpen={modalOrderDetailsOpenOpen} orderButtonClick={orderButtonClick} bunIngredient={bunIngredient}/>
-        </BurgerConstructorContext.Provider>
+        <DndProvider backend={HTML5Backend}>
+          <BurgerIngredients ingredients={props.ingredients} modalOpen={modalIngredientDetailsOpen} />
+          <BurgerConstructor actualIngredients={props.actualIngredients} modalOpen={modalOrderDetailsOpenOpen} orderButtonClick={orderButtonClick} bunIngredient={bunIngredient}/>
+        </DndProvider>
         </main>
       </div>
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = state => {  
   return {
-    ingredients: state.ingredients,
+    ingredients: state.ingredients.ingredients,
+    actualIngredients: state.ingredients.actualIngredients,
     ingredient: state.ingredient,
-    orderNumber: state.orderNumber
+    orderNumber: state.orderNumber,
   };
 };
 
@@ -95,7 +95,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchData: url => dispatch(ingredientsFetchData(url)),
     selectIngredient: (ingredient) => dispatch(setSelectedIngredient(ingredient)),
-    getOrderNumber: (url, ids) => dispatch(postOrder(url, ids)),
+    getOrderNumber: (url, ids) => dispatch(postOrder(url, ids))
   };
 };
 

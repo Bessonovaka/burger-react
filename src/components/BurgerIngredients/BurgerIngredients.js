@@ -7,7 +7,7 @@ import BurgerIngredientsStyle from './BurgerIngredients.module.css';
 function BurgerIngredients(props) {
     const bunTitleRef = React.createRef();
     const sauceTitleRef = React.createRef();
-    const mainTitleRef = React.createRef();
+    const mainTitleRef = React.createRef();  
 
     const [current, setCurrent] = React.useState('Булки');
 
