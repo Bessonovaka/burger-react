@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-
+import { v4 as uuidv4 } from 'uuid';
 import { ConstructorElement, CurrencyIcon, Button, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import BurgerConstructorStyle from './BurgerConstructor.module.css';
@@ -15,6 +15,7 @@ function BurgerConstructor(props) {
             isHover: monitor.isOver(),
         }),
         drop(curItem) {
+            const customID = uuidv4();
             var isBun = false;
             props.actualIngredients.forEach(item => {
                 if (item.type === "bun") {
@@ -24,8 +25,10 @@ function BurgerConstructor(props) {
             dispatch({
                 type: 'UPDATE_TYPE',
                 id: curItem._id,
-                count: curItem.__v + 1,
+                count: curItem.__v,
                 isBun: isBun,
+                itemType: curItem.type, 
+                customID: customID
             });
         }
     });
@@ -72,6 +75,8 @@ function BurgerConstructor(props) {
                             dispatch({
                               type: 'DELETE_INGREDIENT',
                               id: ingredient._id,
+                              count: ingredient.__v,
+                              customID: ingredient.customID
                             });
                         };
                         if (ingredient.type !== "bun") {
