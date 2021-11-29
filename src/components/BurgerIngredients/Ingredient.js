@@ -21,7 +21,7 @@ function Ingredient(props) {
     return( 
         <li ref={drag} onClick={handleIngredientClick} className={`${BurgerIngredientsStyle.ingredients__item}`} style={{ opacity }}>
             <img alt={props.ingredient.name} src={props.ingredient.image} className={BurgerIngredientsStyle.ingredients__img} />
-            <Counter count={1} size="default" />
+            <Counter count={props.ingredient.__v} size="default" />
             <div className={BurgerIngredientsStyle.ingredients__price}>
                 <span className={BurgerIngredientsStyle.price}>{props.ingredient.price}</span>
                 <CurrencyIcon type="primary" />

@@ -14,10 +14,20 @@ function BurgerConstructor(props) {
         collect: monitor => ({
             isHover: monitor.isOver(),
         }),
-        drop(item) {dispatch({
-            type: 'UPDATE_TYPE',
-            id: item._id
-        });},
+        drop(curItem) {
+            var isBun = false;
+            props.actualIngredients.forEach(item => {
+                if (item.type === "bun") {
+                    isBun = true;
+                }
+            });
+            dispatch({
+                type: 'UPDATE_TYPE',
+                id: curItem._id,
+                count: curItem.__v + 1,
+                isBun: isBun,
+            });
+        }
     });
 
     function orderBtnClick() {
@@ -27,17 +37,17 @@ function BurgerConstructor(props) {
     };
 
     function sumPriceOrder(burgerIngredients) {
-        let sum = props.bunIngredient[0] && 2*props.bunIngredient[0].price;
+        let sum = 0;
         burgerIngredients.forEach((ingredient) => {
                 if (ingredient.type !== "bun") {
                     sum += ingredient.price;
-                }
+                } else {
+                    sum += 2*props.bunIngredient[0].price;
+                } 
             }
-
         )        
         return sum;
-    }
-
+    };
 
     const backgroundColor = isHover ? "lightgreen" : "transparent";
     
@@ -57,15 +67,27 @@ function BurgerConstructor(props) {
                     </div>
                 )}                         
                 <ul className={`${BurgerConstructorStyle.constructor_list} layout-cell layout-scrollbar`}>
-                    {props.actualIngredients && props.actualIngredients.map((ingredient, i) => (ingredient.type !== "bun") && (
-                        <li key={i} className={BurgerConstructorStyle.constructor_item}>
-                            <DragIcon type="primary" />
-                            <ConstructorElement
-                            text={ingredient.name}
-                            price={ingredient.price}
-                            thumbnail={ingredient.image}
-                            />
-                        </li>)
+                    {props.actualIngredients && props.actualIngredients.map((ingredient, i) => {
+                        const deleteIngredient = () => {
+                            dispatch({
+                              type: 'DELETE_INGREDIENT',
+                              id: ingredient._id,
+                            });
+                        };
+                        if (ingredient.type !== "bun") {
+                            return (
+                                    <li key={i} className={BurgerConstructorStyle.constructor_item}>
+                                        <DragIcon type="primary" />
+                                        <ConstructorElement
+                                        text={ingredient.name}
+                                        price={ingredient.price}
+                                        thumbnail={ingredient.image}
+                                        handleClose={deleteIngredient}
+                                        />
+                                    </li>
+                                )
+                            }
+                        }
                     )}
                 </ul>
                 {props.bunIngredient[0] && (

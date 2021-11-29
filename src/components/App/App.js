@@ -75,7 +75,7 @@ function App(props) {
         <main className="main">
         <DndProvider backend={HTML5Backend}>
           <BurgerIngredients ingredients={props.ingredients} modalOpen={modalIngredientDetailsOpen} />
-          <BurgerConstructor actualIngredients={props.actualIngredients} modalOpen={modalOrderDetailsOpenOpen} orderButtonClick={orderButtonClick} bunIngredient={bunIngredient}/>
+          <BurgerConstructor ingredients={props.ingredients} actualIngredients={props.actualIngredients} modalOpen={modalOrderDetailsOpenOpen} orderButtonClick={orderButtonClick} bunIngredient={bunIngredient}/>
         </DndProvider>
         </main>
       </div>

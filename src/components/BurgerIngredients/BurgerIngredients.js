@@ -60,7 +60,7 @@ function BurgerIngredients(props) {
                 <h2 ref={sauceTitleRef} className={BurgerIngredientsStyle.ingredients__title}>Соусы</h2>
                 <ul className={BurgerIngredientsStyle.ingredients__list}>
                     {props.ingredients.map((ingredient, i) => (
-                        ingredient.type === "sauce" && <Ingredient modal={props.modal} modalOpen={props.modalOpen} key={i} ingredient={ingredient}  />
+                        ingredient.type === "sauce" && <Ingredient modal={props.modal} modalOpen={props.modalOpen} key={i} ingredient={ingredient} />
                     ))}
                 </ul>
             </div>
