@@ -10,7 +10,7 @@ export function postOrder(url, ingredients) {
     return (dispatch) => {
         fetch(url, {
       method: 'POST',
-      body: JSON.stringify({ingredients})
+      body: JSON.stringify({"ingredients": ingredients})
     })
       .then((res) => {
         if (!res.ok) {

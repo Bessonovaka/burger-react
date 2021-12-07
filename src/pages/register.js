@@ -1,16 +1,29 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 import LoginStyle from './login.module.css';
 import { Button, Input, PasswordInput, EmailInput } from '@ya.praktikum/react-developer-burger-ui-components';
 
 
-export function RegisterPage() {
+export function RegisterPage(props) {
     const [form, setValue] = useState({ email: '', password: '', name: '' });
 
     const onChange = e => {
       setValue({ ...form, [e.target.name]: e.target.value });
     };
+
+    const history = useHistory();
+    const location = useLocation();
+
+    const { from } = { from: { pathname: `${location.pathname}` } } || { from: { pathname: "/" } };
+    const cb = () => {
+        history.replace(from);
+    };
+
+    const registrationButtonClick = (e) => {
+      e.preventDefault();
+      props.registrationButtonClick(form, cb)
+    }
   
   return (
     <div className={LoginStyle.wrapper}>
@@ -25,7 +38,7 @@ export function RegisterPage() {
             name="password"
             onChange={onChange}
           />
-          <Button type="primary" size="medium">
+          <Button type="primary" size="medium" onClick={registrationButtonClick}>
             Зарегистрироваться
           </Button>
         </form>

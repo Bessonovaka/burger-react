@@ -4,7 +4,7 @@ import ProfileStyle from './profile.module.css';
 import { Input } from '@ya.praktikum/react-developer-burger-ui-components';
 
 
-export function ProfilePage() {
+export function ProfilePage(props) {
     const [form, setValue] = useState({ email: '', password: '', name: '' });
 
     const onChange = e => {
@@ -17,7 +17,7 @@ export function ProfilePage() {
             <ul className={ProfileStyle.menu}>
                 <li className={`${ProfileStyle.menu__item} ${ProfileStyle.menu__item_active} text text_type_main-medium`}>Профиль</li>
                 <li className={`${ProfileStyle.menu__item} text text_type_main-medium`}>История заказов</li>
-                <li className={`${ProfileStyle.menu__item} text text_type_main-medium`}>Выход</li>
+                <li className={`${ProfileStyle.menu__item} text text_type_main-medium`} onClick={props.logOutButtonClick}>Выход</li>
                 <p className={`${ProfileStyle.text} text text_type_main-small`}>В этом разделе вы можете изменить свои персональные данные</p>
             </ul>
             <form className={ProfileStyle.form}>

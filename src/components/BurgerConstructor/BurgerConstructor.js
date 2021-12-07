@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import { Link } from 'react-router-dom';
 import { ConstructorElement, CurrencyIcon, Button, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import BurgerConstructorStyle from './BurgerConstructor.module.css';
@@ -7,7 +8,6 @@ import BurgerConstructorStyle from './BurgerConstructor.module.css';
 import { useDrop } from 'react-dnd';
 
 function BurgerConstructor(props) {
-
     const dispatch = useDispatch();
     const [{ isHover } , dropTarget] = useDrop({
         accept: "ingredient",
@@ -112,9 +112,21 @@ function BurgerConstructor(props) {
                     <span  className={`${BurgerConstructorStyle.price__text} text_type_digits-medium`}>{sumPriceOrder(props.actualIngredients)}</span>
                     <CurrencyIcon type="primary" />
                     <div className={BurgerConstructorStyle.price__btn}>
-                    <Button type="primary" size="medium" onClick={orderBtnClick}>
-                        Оформить заказ
-                    </Button>
+                    { props.isLoggedIn ? (
+                            <Button type="primary" size="medium" onClick={orderBtnClick}>
+                                Оформить заказ
+                            </Button>
+                        ) : (
+                            <Link 
+                                to={{
+                                pathname: `/login`
+                                }}
+                                className={ `text text_type_main-default`}
+                            >
+                                Войти
+                            </Link>
+                        )
+                    }
                     </div>
                 </div>    
             </section>

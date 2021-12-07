@@ -20,7 +20,7 @@ function HomePage(props) {
             <main className={HomePageStyles.main}>
                 <DndProvider backend={HTML5Backend}>
                     <BurgerIngredients ingredients={props.ingredients} modalOpen={props.modalIngredientDetailsOpen} />
-                    <BurgerConstructor ingredients={props.ingredients} actualIngredients={props.actualIngredients} modalOpen={props.modalOrderDetailsOpenOpen} orderButtonClick={props.orderButtonClick} bunIngredient={props.bunIngredient}/>
+                    <BurgerConstructor isLoggedIn={props.isLoggedIn} ingredients={props.ingredients} actualIngredients={props.actualIngredients} modalOpen={props.modalOrderDetailsOpenOpen} orderButtonClick={props.orderButtonClick} bunIngredient={props.bunIngredient}/>
                 </DndProvider>
             </main>
         </>

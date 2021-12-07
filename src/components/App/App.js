@@ -5,6 +5,7 @@ import { Switch } from 'react-router-dom';
 
 import AppHeader from '../AppHeader/AppHeader';
 import HomePage from '../../pages/home'; 
+import { ProtectedRoute } from '../ProtectedRoute/ProtectedRoute';
 import { LoginPage } from '../../pages/login';
 import { RegisterPage } from '../../pages/register';
 import { ForgotPasswordPage } from '../../pages/forgot-password';
@@ -16,6 +17,7 @@ import { NotFound404 } from '../../pages/not-found';
 import { setSelectedIngredient } from '../../services/actions/ingredient';
 import { ingredientsFetchData } from '../../services/actions/ingredients';
 import { postOrder } from '../../services/actions/order';
+import { registration, logIn, logOut } from '../../services/actions/auth';
 
 import './App.css';
 
@@ -48,6 +50,18 @@ function App(props) {
   function orderButtonClick() {
     props.getOrderNumber('https://norma.nomoreparties.space/api/orders', id_);
   };
+
+  function registrationButtonClick(user) {
+    props.registrationFetch('https://norma.nomoreparties.space/api/auth/register', user);
+  }
+
+  function loginButtonClick(user, cb) {
+    props.loginFetch('https://norma.nomoreparties.space/api/auth/login', user, cb);
+  }
+
+  function logOutButtonClick() {
+    props.logOutFetch('https://norma.nomoreparties.space/api/auth/logout');
+  }
 
   function modalIngredientDetailsOpen(ingredient) {
     setIngredientDetailsOpen(true);
@@ -82,13 +96,14 @@ function App(props) {
               orderButtonClick={orderButtonClick} 
               bunIngredient={bunIngredient}
               modalIngredientDetailsOpen={modalIngredientDetailsOpen}
+              isLoggedIn={props.isLoggedIn}
             />
           </Route>
           <Route path="/login" exact>
-            <LoginPage />
+            <LoginPage isLoggedIn={props.isLoggedIn} loginButtonClick={loginButtonClick} />
           </Route>
           <Route path="/register" exact>
-            <RegisterPage />
+            <RegisterPage registrationButtonClick={registrationButtonClick} />
           </Route>
           <Route path="/forgot-password" exact>
             <ForgotPasswordPage />
@@ -96,13 +111,11 @@ function App(props) {
           <Route path="/reset-password" exact>
             <ResetPasswordPage />
           </Route>
-          <Route path="/profile" exact>
-            <ProfilePage />
-          </Route>
+          <ProtectedRoute isLoggedIn={props.isLoggedIn} path="/profile" exact>
+            <ProfilePage logOutButtonClick={logOutButtonClick} />
+          </ProtectedRoute>
           <Route path="/ingredients/id" exact>
-            <IngredientPage 
-              ingredient={props.ingredient}
-            />
+            <IngredientPage ingredient={props.ingredient} />
           </Route>
           <Route>
             <NotFound404 />
@@ -119,6 +132,7 @@ const mapStateToProps = state => {
     actualIngredients: state.ingredients.actualIngredients,
     ingredient: state.ingredient,
     orderNumber: state.orderNumber,
+    isLoggedIn: state.auth.isLoggedIn
   };
 };
 
@@ -126,7 +140,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchData: url => dispatch(ingredientsFetchData(url)),
     selectIngredient: (ingredient) => dispatch(setSelectedIngredient(ingredient)),
-    getOrderNumber: (url, ids) => dispatch(postOrder(url, ids))
+    getOrderNumber: (url, ids) => dispatch(postOrder(url, ids)),
+    registrationFetch: (url, user, cb) => dispatch(registration(url, user, cb)),
+    loginFetch: (url, user, cb) => dispatch(logIn(url, user, cb)),
+    logOutFetch: (url) => dispatch(logOut(url))
   };
 };
 
