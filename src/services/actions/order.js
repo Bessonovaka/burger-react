@@ -5,11 +5,12 @@ export function postOrderSuccess(orderNumber) {
     }
 }
 
-export function postOrder(url, ids) {
+export function postOrder(url, ingredients) {
+  
     return (dispatch) => {
         fetch(url, {
       method: 'POST',
-      body: JSON.stringify({"ingredients": ids})
+      body: JSON.stringify({ingredients})
     })
       .then((res) => {
         if (!res.ok) {
@@ -21,7 +22,7 @@ export function postOrder(url, ids) {
         dispatch(postOrderSuccess(data.order));
       })
       .catch((err) => {
-        console.log("Ошибка!")
+        console.log(err)
       });
     }
 }

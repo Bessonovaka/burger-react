@@ -42,6 +42,12 @@ export function ingredients(state = initialState, action) {
                 })
             };
         }
+        case 'DROP_INGREDIENTS': {
+            return {
+                ...state, 
+                actualIngredients: [...state.actualIngredients.filter(item => item.customID !== action.customID)],
+            }
+        }
         default:
             return state
     }

@@ -53,7 +53,7 @@ function BurgerConstructor(props) {
     };
 
     const backgroundColor = isHover ? "lightgreen" : "transparent";
-    
+     
         return (
             <section className={`${BurgerConstructorStyle.constructor}`} ref={dropTarget} style={{backgroundColor}} > 
                 {props.bunIngredient[0] && (
@@ -82,7 +82,7 @@ function BurgerConstructor(props) {
                         if (ingredient.type !== "bun") {
                             return (
                                     <li key={i} className={BurgerConstructorStyle.constructor_item}>
-                                        <DragIcon type="primary" />
+                                        <DragIcon type="primary"/>
                                         <ConstructorElement
                                         text={ingredient.name}
                                         price={ingredient.price}
@@ -119,8 +119,6 @@ function BurgerConstructor(props) {
                 </div>    
             </section>
         )
-    
-
-}
+    }
 
 export default BurgerConstructor;

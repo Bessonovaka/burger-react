@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  height: 80vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.link {
+  color: #8585ad;
+  text-decoration: none;
+}
+
+.text {
+  margin-bottom: 40px;
+}

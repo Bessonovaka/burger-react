@@ -29,6 +29,8 @@
 
 .navigation__text {
   margin-left: 9px;
+  color: white;
+  text-decoration: none;
 }
 
 .navigation__logo {

@@ -1,21 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import { DndProvider } from 'react-dnd';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 import AppHeader from '../AppHeader/AppHeader';
-import BurgerIngredients from '../BurgerIngredients/BurgerIngredients';
-import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
-import ModalOverlay from '../ModalOverlay/ModalOverlay';
+import HomePage from '../../pages/home'; 
+import { LoginPage } from '../../pages/login';
+import { RegisterPage } from '../../pages/register';
+import { ForgotPasswordPage } from '../../pages/forgot-password';
+import { ResetPasswordPage } from '../../pages/reset-password';
+import { ProfilePage } from '../../pages/profile';
+import { IngredientPage } from '../../pages/ingredient';
+import { NotFound404 } from '../../pages/not-found';
 
 import { setSelectedIngredient } from '../../services/actions/ingredient';
 import { ingredientsFetchData } from '../../services/actions/ingredients';
 import { postOrder } from '../../services/actions/order';
 
 import './App.css';
-
-import { constData } from '../../utils/constants';
-
 
 function App(props) {
   const [isIngredientDetailsOpen, setIngredientDetailsOpen] = React.useState(false);
@@ -37,14 +39,14 @@ function App(props) {
     };  
   }, []);
 
-  const id_ = constData.map((ingredient) => {
+  const id_ = props.actualIngredients.map((ingredient) => {
     return ingredient._id;
   })
 
   const bunIngredient = props.actualIngredients.filter(item => item.type === 'bun')
 
   function orderButtonClick() {
-    props.getOrderNumber('https://norma.nomoreparties.space/api/orders/', id_);
+    props.getOrderNumber('https://norma.nomoreparties.space/api/orders', id_);
   };
 
   function modalIngredientDetailsOpen(ingredient) {
@@ -62,23 +64,52 @@ function App(props) {
   };
 
   return (
+    <Router>
       <div className="App">
-        <ModalOverlay 
-          isIngredientDetailsOpen={isIngredientDetailsOpen}
-          isOrderDetailsOpen={isOrderDetailsOpen}
-          ingredient={props.ingredient}
-          onClose={closeAllPopups}
-          orderInfo={props.order}
-        />
-        <AppHeader />
         
-        <main className="main">
-        <DndProvider backend={HTML5Backend}>
-          <BurgerIngredients ingredients={props.ingredients} modalOpen={modalIngredientDetailsOpen} />
-          <BurgerConstructor ingredients={props.ingredients} actualIngredients={props.actualIngredients} modalOpen={modalOrderDetailsOpenOpen} orderButtonClick={orderButtonClick} bunIngredient={bunIngredient}/>
-        </DndProvider>
-        </main>
+        <AppHeader />
+        <Switch>
+          <Route path='/' exact>
+            <HomePage 
+              isIngredientDetailsOpen={isIngredientDetailsOpen}
+              isOrderDetailsOpen={isOrderDetailsOpen}
+              ingredient={props.ingredient}
+              onClose={closeAllPopups}
+              orderInfo={props.order}
+              ingredients={props.ingredients} 
+              actualIngredients={props.actualIngredients} 
+              modalOrderDetailsOpenOpen={modalOrderDetailsOpenOpen} 
+              orderButtonClick={orderButtonClick} 
+              bunIngredient={bunIngredient}
+              modalIngredientDetailsOpen={modalIngredientDetailsOpen}
+            />
+          </Route>
+          <Route path="/login" exact>
+            <LoginPage />
+          </Route>
+          <Route path="/register" exact>
+            <RegisterPage />
+          </Route>
+          <Route path="/forgot-password" exact>
+            <ForgotPasswordPage />
+          </Route>
+          <Route path="/reset-password" exact>
+            <ResetPasswordPage />
+          </Route>
+          <Route path="/profile" exact>
+            <ProfilePage />
+          </Route>
+          <Route path="/ingredients/id" exact>
+            <IngredientPage 
+              ingredient={props.ingredient}
+            />
+          </Route>
+          <Route>
+            <NotFound404 />
+          </Route>
+        </Switch>
       </div>
+    </Router>
   );
 }
 

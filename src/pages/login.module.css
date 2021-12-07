@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  height: 80vh;
+}
+
+.container {
+  max-width: 480px;
+  text-align: center;
+}
+
+.form {
+  display: grid;
+  gap: 24px;
+  justify-items: center;
+  margin-bottom: 80px;
+}
+
+.text {
+  color: #8585ad;
+  margin-bottom: 16px;
+}
+
+.link {
+  color: #4c4cff;
+  cursor: pointer;
+}
